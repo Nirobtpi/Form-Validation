@@ -1,16 +1,16 @@
 <?php
-
-if(isset($_POST['submit'])){
-    $name=$_POST['name'];
-    $email=$_POST['email'];
-
-    if(empty($name)){
-        $error="Enter Your Name";
-    }elseif(empty($email)){
-        $error="Enter Your Email";
+include_once('functions.php');
+if (isset($_POST['submit'])) {
+    $name = $_POST['name'];
+    $email = $_POST['email'];
+    $city=$_POST['city'];
+    if (empty($name)) {
+        $error = "Enter Your Name";
+    } elseif (empty($email)) {
+        $error = "Enter Your Email";
     }
 
-
+    echo $city;
     echo  filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
     echo  filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
 }
@@ -57,6 +57,18 @@ if(isset($_POST['submit'])){
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
                                     <input type="email" class="form-control" name="email" id="email" placeholder="abc@mail.com" />
+                                </div>
+                                <div class="mb-3">
+                                    <div class="mb-3">
+                                        <label for="city" class="form-label">City</label>
+                                        <select class="form-select form-select-lg" name="city" id="city">
+                                            <option selected>Select one</option>
+                                            <option value="New Delhi" <?php if($city == "New Delhi"){ echo "selected"; } ?>  >New Delhi</option>
+                                            <option value="Istanbul">Istanbul</option>
+                                            <option value="Jakarta">Jakarta</option>
+                                        </select>
+                                    </div>
+
                                 </div>
                                 <div class="mb-3">
                                     <input class="btn btn-success" type="submit" name="submit" value="Submit Now">

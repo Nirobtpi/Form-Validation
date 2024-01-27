@@ -8,20 +8,30 @@ if (isset($_POST['submit'])) {
 
     $checked = isset($_POST['terms']);
 
+    // Select Options 
+    $options1 = $_POST['class'] ?? array();
+
+
+
     if (empty($name)) {
         $error = "Enter Your Name";
     } elseif (empty($email)) {
         $error = "Enter Your Email";
     } elseif (empty($checked)) {
         $error = "Please Checked First";
+    } elseif (empty($options1)) {
+        $error = "Please Select A Option";
     } else {
-        echo  filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING);
-        echo  filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL);
-        echo $checked;
+        echo  filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) . "<br>";
+        echo  filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) . "<br>";
+        echo $checked . "<br>";
+        print_r($options1);
 
-
-
-        print_r($_POST['furits']);
+        echo "<br>";
+        if (count($options1) > 0) {
+            echo "You Are Selected : " . join(" , ", $options1);
+        }
+        // print_r($_POST['furits']);
     }
 };
 
@@ -71,12 +81,13 @@ $class = ['First', 'Second', 'Third', 'Fourth'];
                                     <input type="email" class="form-control" name="email" id="email" placeholder="abc@mail.com" />
                                 </div>
                                 <div class="mb-3">
-                                    <label for="select" class="form-label">select Subject</label>
-                                    <div class="mb-3">
-                                        <label for="class" class="form-label">City</label>
-                                        <select class="form-select form-select-lg" name="calss" id="class">
 
-                                            <option selected disabled>Select one</option>
+                                    <div class="mb-3">
+                                        <label for="class" class="form-label">Select Class</label>
+
+                                        <select class="form-select form-select-lg" name="class[]" id="class" multiple>
+                                            
+                                            <option disabled>Select one</option>
                                             <?php createOptions($class); ?>
                                         </select>
                                     </div>

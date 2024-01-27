@@ -9,8 +9,17 @@ function CheckedInput($input, $value)
 
 // select Options Loop 
 
-function createOptions($options){
-    foreach($options as $option){
-        printf("<option value='%s' >%s</option>",strtolower($option),ucwords($option));
+function createOptions($options)
+{
+    foreach ($options as $option) {
+       
+        // $selected = in_array($option, $val) ? 'selected' : '';
+        // $selected="";
+        // if(in_array($option,$val)){
+        //     $selected= 'selected';
+        // }
+        printf("<option value='%s' >%s</option>", strtolower($option), ucwords($option));
     }
 }
+
+
