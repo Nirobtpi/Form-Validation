@@ -4,7 +4,8 @@ if (isset($_POST['submit'])) {
     $name = $_POST['name'];
     $email = $_POST['email'];
     $phone = $_POST['number'];
-    // $myname = isset($_POST['myname']);
+    $city = $_POST['city'];
+    $myname = isset($_POST['myname']);
     $photo = $_FILES['file_upload']['tmp_name'];
 
     $terge_dir = 'uploads/';
@@ -25,25 +26,28 @@ if (isset($_POST['submit'])) {
         $error = "Number Must Be User Numeric Number";
     } elseif (strlen($phone) != 11) {
         $error = "Number Must Be Used 11 Digit";
-    }
-    //  elseif (empty($myname)) {
-    //     $error = "Please Cheek A Name";
-    // }
-    elseif (empty($photo)) {
+    } elseif (empty($city)) {
+        $error = "Please Enter a City";
+    } elseif (!isset($myname)) {
+        $error = "Please Cheek A Name";
+    } elseif (empty($photo)) {
         $error = "Please Enter a  Photo";
     } elseif ($filetype != 'jpg' && $filetype != 'png' & $filetype != 'jpeg' && $filetype != 'gif') {
         $error = "Please Enter A Valid Photo";
     } else {
 
-         (move_uploaded_file($photo, $terget_file));
+        (move_uploaded_file($photo, $terget_file));
         echo $name . "<br>";
         echo $email . "<br>";
         echo $phone . "<br>";
-        print_r($_POST['myname']); echo "<br>";
+        echo $city . "<br>";
+        print_r($_POST['myname']);
+        echo "<br>";
         echo basename($_FILES["file_upload"]["name"]);
 
         $success = "Nirob Is Successfully Done";
     }
+    // phpinfo();
 }
 
 function value($val)
@@ -110,7 +114,7 @@ function value($val)
                                 </div>
                             <?php endif;  ?>
 
-                            <form action="data.php" method="POST" enctype="multipart/form-data">
+                            <form action="" method="POST" enctype="multipart/form-data">
 
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
@@ -127,7 +131,7 @@ function value($val)
                                 <div class="mb-3">
                                     <label for="city" class="form-label">City</label>
                                     <select class="form-select form-select-lg" name="city" id="city">
-                                        <option selected>Select one</option>
+
                                         <option value="New Delhi">New Delhi</option>
                                         <option value="Istanbul">Istanbul</option>
                                         <option value="Jakarta">Jakarta</option>
