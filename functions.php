@@ -20,6 +20,12 @@ function createOptions($options)
         // }
         printf("<option value='%s' >%s</option>", strtolower($option), ucwords($option));
     }
+};
+
+function getValue($value){
+    if(isset($_POST[$value])){
+        echo $_POST[$value];
+    }
 }
 
 

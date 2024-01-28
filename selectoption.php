@@ -22,6 +22,7 @@ if (isset($_POST['submit'])) {
     } elseif (empty($options1)) {
         $error = "Please Select A Option";
     } else {
+        
         echo  filter_input(INPUT_POST, 'name', FILTER_SANITIZE_STRING) . "<br>";
         echo  filter_input(INPUT_POST, 'email', FILTER_SANITIZE_EMAIL) . "<br>";
         echo $checked . "<br>";
@@ -74,7 +75,7 @@ $class = ['First', 'Second', 'Third', 'Fourth'];
                             <form action="" method="POST">
                                 <div class="mb-3">
                                     <label for="name" class="form-label">Name</label>
-                                    <input type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name" />
+                                    <input value="<?php getValue('name') ?>" type="text" class="form-control" name="name" id="name" placeholder="Enter Your Name" />
                                 </div>
                                 <div class="mb-3">
                                     <label for="email" class="form-label">Email</label>
