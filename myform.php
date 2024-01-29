@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
     } elseif (is_numeric($name)) {
         $error = "Name Must Be User Letter!";
     } elseif (empty($email)) {
-        $error = "Please Enter Your Name!";
+        $error = "Please Enter Your Email!";
     } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error = "Please Enter A Valid Email!";
     } elseif (empty($phone)) {
@@ -56,6 +56,7 @@ function value($val)
         echo $_POST[$val];
     }
 }
+
 
 ?>
 
