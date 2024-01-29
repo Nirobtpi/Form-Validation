@@ -4,10 +4,11 @@ include_once('functions.php');
 $task = 'encode';
 // echo $mode;
 
-if (isset($_GET['task']) && $_GET['task'] != '') {
+if (isset($_REQUEST['task']) && $_REQUEST['task'] != '') {
     $task = $_GET['task'];
-    // print_r($mode);
+    print_r($task);
 }
+
 $key = 'abcdefghijklmnopqrstopwxyz1234567890';
 
 if ('key' == $task) {
@@ -15,8 +16,17 @@ if ('key' == $task) {
     $key_original = str_split($key);
     shuffle($key_original);
     $key = join('', $key_original);
-}elseif(isset($_POST['key']) && $_POST['key'] !=""){
-    
+} elseif (isset($_POST['key']) && $_POST['key'] != '') {
+    $key = $_POST['key'];
+}
+
+$scrambleData = '';
+if ('encode' == $task) {
+    $data = $_POST['data'] ?? '';
+
+    if ($data != '') {
+        $scrambleData = scrambleData($data, $key);
+    }
 }
 
 ?>
@@ -57,16 +67,18 @@ if ('key' == $task) {
                             <form action="scrambler.php" method="POST" class="mt-5">
                                 <div class="mb-3">
                                     <label for="key" class="form-label">Key</label>
-                                    <input type="text" <?php displayKey($key); ?> class="form-control" name="" id="key" />
+                                    <input type="text" <?php displayKey($key); ?> class="form-control" name="key" id="key" />
                                 </div>
 
                                 <div class="mb-3">
                                     <label for="data" class="form-label">Data</label>
-                                    <textarea class="form-control" name="data" id="data"></textarea>
+                                    <textarea class="form-control" name="data" id="data"><?php if (isset($_POST['data'])) {
+                                                                                                echo $_POST['data'];
+                                                                                            }  ?></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <label for="result" class="form-label">Result</label>
-                                    <textarea class="form-control" name="result" id="result"></textarea>
+                                    <textarea class="form-control" name="result" id="result"><?php echo $scrambleData ?></textarea>
                                 </div>
                                 <div class="mb-3">
                                     <input class="btn btn-success" name="submit" type="submit" value="Do It For Me">
