@@ -6,7 +6,7 @@ $task = 'encode';
 
 if (isset($_REQUEST['task']) && $_REQUEST['task'] != '') {
     $task = $_GET['task'];
-    print_r($task);
+    // print_r($task);
 }
 
 $key = 'abcdefghijklmnopqrstopwxyz1234567890';
@@ -47,6 +47,24 @@ if ('encode' == $task) {
 <body>
     <header>
         <!-- place navbar here -->
+        <?php
+        $nir = 'encode';
+
+        $ke = "abcd123";
+        $keyy = str_split($ke);
+        shuffle($keyy);
+        $ke = join("", $keyy);
+        print_r($ke);
+        if ('saba' == $nir) {
+            $keyy = str_split($ke);
+            shuffle($keyy);
+            join("", $keyy);
+        } elseif (isset($_POST['ni']) && $_POST['ni'] != '') {
+            $ke = $_POST['ni'];
+        }
+        ?>
+        <a href="?nirob=saba">Nirob</a>
+        <input type="text" name="ni" value="<?php echo $ke; ?>">
     </header>
     <main class="p-4">
         <div class="container">
