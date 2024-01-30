@@ -22,6 +22,8 @@ if (isset($_POST['btn'])) {
 }
 
 
+
+
 ?>
 
 <!doctype html>
@@ -69,7 +71,9 @@ if (isset($_POST['btn'])) {
                                 </div>
                                 <div class="mb-3">
                                     <label disable for="result" class="form-label">Result</label>
-                                    <input disabled type="text" class="form-control" name="snumber" id="result" placeholder="Show Result" value="<?php if(isset($_POST['btn'])){ echo $finalres; } ?>" />
+                                    <input disabled type="text" class="form-control" name="snumber" id="result" placeholder="Show Result" value="<?php if (isset($_POST['btn'])) {
+                                                                                                                                                        echo $finalres;
+                                                                                                                                                    } ?>" />
                                 </div>
                                 <div class="mb-3">
                                     <input type="submit" value="+" class="btn btn-success" name='btn'>
