@@ -43,3 +43,31 @@ echo "<br>";
 echo "<br>";
 echo "<br>";
 print_r($part);
+echo "<br>";
+echo "<br>";
+echo "<br>";
+
+$t20 = "My name is Nirob";
+
+$strpos = strpos($t20, 'Nirob');
+$strpos1 = stripos($t20, 'nirob');
+$strpos2 = strrpos($t20, 'Nirob');
+
+echo $strpos;
+echo "<br>";
+echo $strpos1;
+echo "<br>";
+echo $strpos2;
+echo "<br>";
+echo "<br>";
+
+$trim = "  Hello 
+Bangladesh  ";
+
+echo trim($trim);
+echo "<br>";
+echo "<br>";
+
+$wordwrap = "Hello Bangladesh rrrrrrrrrrrrrr how are you!";
+
+echo wordwrap($wordwrap, 50);
